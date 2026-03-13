@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Saas Template Project - AI for R&D Teams</title>
+    <meta name="description" content="Contact the Researchily team to learn how our AI chat for R&D can accelerate your literature reviews, patent searches, and experiment planning.">
+    <style>
+        :root {
+            --color-primary: #8B5CF6;
+            --color-primary-dark: #6D28D9;
+            --color-accent: #F59E0B;
+            --color-background: #0B0E14;
+            --color-surface: #161B26;
+            --color-text: #FFFFFF;
+            --color-text-muted: #94A3B8;
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --gradient-vibrant: linear-gradient(135deg, #8B5CF6 0%, #F59E0B 100%);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        header {
+            background-color: rgba(11, 14, 20, 0.9);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            text-decoration: none;
+            color: var(--color-text);
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-text-muted);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--color-primary);
+        }
+
+        .nav-cta {
+            background: var(--color-primary);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .nav-cta:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+        }
+
+        /* Hero Section */
+        .contact-hero {
+            padding: 8rem 2rem 4rem;
+            background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.15), transparent),
+                        radial-gradient(circle at bottom left, rgba(245, 158, 11, 0.1), transparent);
+            text-align: center;
+        }
+
+        .contact-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+
+        .gradient-text {
+            background: var(--gradient-vibrant);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contact-hero p {
+            font-size: 1.25rem;
+            color: var(--color-text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Contact Grid */
+        .contact-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+        }
+
+        .contact-form-container {
+            background: var(--color-surface);
+            padding: 3rem;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: var(--color-text);
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.25rem;
+            background: var(--gradient-vibrant);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.02);
+            filter: brightness(1.1);
+        }
+
+        .info-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 20px;
+            border-left: 4px solid var(--color-accent);
+        }
+
+        .info-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-accent);
+        }
+
+        .info-card p {
+            color: var(--color-text-muted);
+            font-size: 1rem;
+        }
+
+        .info-card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .info-card li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* Specialized Support Section */
+        .specialized-support {
+            background: var(--color-surface);
+            padding: 6rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .support-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .support-item {
+            padding: 2.5rem;
+            border-radius: 20px;
+            background: var(--color-background);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .support-item:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-5px);
+        }
+
+        .support-item h4 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-background);
+            padding: 6rem 2rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand p {
+            margin-top: 1rem;
+            color: var(--color-text-muted);
+        }
+
+        .footer-links h5 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-text);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--color-text-muted);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--color-accent);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background: var(--color-primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 968px) {
+            .contact-section {
+                grid-template-columns: 1fr;
+            }
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .contact-form-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <span style="font-weight:700;font-size:1.25rem">Saas Template Project</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="contact.html" class="active">Contact</a>
+                <a href="#form" class="nav-cta">Get Started</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact-hero">
+            <h1>Accelerate Your <span class="gradient-text">Innovation</span></h1>
+            <p>Ready to eliminate R&D hallucinations and reclaim your research time? Connect with our technical deployment team to integrate Researchily into your workflow.</p>
+        </section>
+
+        <section class="contact-section" id="form">
+            <div class="contact-form-container">
+                <form action="https://examplex.saas.co.id/contact" method="POST">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Dr. Jane Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Work Email</label>
+                        <input type="email" id="email" name="email" placeholder="jane.doe@innovation-lab.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="industry">Industry Focus</label>
+                        <select id="industry" name="industry">
+                            <option value="pharma">Pharmaceuticals</option>
+                            <option value="materials">Materials Science</option>
+                            <option value="electronics">Electronics & Hardware</option>
+                            <option value="fnb">Food & Beverage R&D</option>
+                            <option value="beauty">Beauty & Personal Care</option>
+                            <option value="other">Other Innovation Lab</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">How can Researchily help your team?</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Tell us about your current literature review or experiment planning bottlenecks..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Research Brief</button>
+                </form>
+            </div>
+
+            <div class="info-panel">
+                <div class="info-card">
+                    <h3>Enterprise Sales</h3>
+                    <p>Looking to deploy across a global R&D department? We offer custom data options and dedicated security instances.</p>
+                    <ul>
+                        <li>✓ IP Protection Consultation</li>
+                        <li>✓ On-premise Deployment</li>
+                        <li>✓ Team Training Playbooks</li>
+                    </ul>
+                </div>
+
+                <div class="info-card" style="border-left-color: var(--color-primary);">
+                    <h3>Technical Support</h3>
+                    <p>Already a Researchily user and need help with API integrations or LIMS/ELN connections?</p>
+                    <ul>
+                        <li>✓ API Documentation Support</li>
+                        <li>✓ Custom Workflow Builds</li>
+                        <li>✓ Error Auditing</li>
+                    </ul>
+                </div>
+
+                <div class="info-card" style="border-left-color: #10B981;">
+                    <h3>Security & IP</h3>
+                    <p>Our AI is designed for high-stakes research. Contact our compliance team for our IP protection whitepaper.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="specialized-support">
+            <div class="support-grid">
+                <div class="support-item">
+                    <h4>Literature Review Audit</h4>
+                    <p>Learn how to use Researchily to summarize thousands of scientific papers and patents without losing context or missing critical citations.</p>
+                </div>
+                <div class="support-item">
+                    <h4>Experiment Planning</h4>
+                    <p>Schedule a session on using AI to map risks, identify open questions, and compare experimental methods effectively.</p>
+                </div>
+                <div class="support-item">
+                    <h4>Innovation Strategy</h4>
+                    <p>Discover how R&D managers use Researchily for idea generation, white space analysis, and project prioritization.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <span style="font-weight:700;font-size:1.25rem">Saas Template Project</span>
+                </a>
+                <p>The specialized AI research partner for high-performing R&D teams. Stop searching, start discovering.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h5>Product</h5>
+                <ul>
+                    <li><a href="index.html">R&D GPT Overview</a></li>
+                    <li><a href="about.html">Literature Review</a></li>
+                    <li><a href="pricing.html">Pricing Plans</a></li>
+                    <li><a href="about.html">Case Studies</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h5>Use Cases</h5>
+                <ul>
+                    <li><a href="about.html">Pharmaceuticals</a></li>
+                    <li><a href="about.html">Materials Science</a></li>
+                    <li><a href="about.html">Electronics</a></li>
+                    <li><a href="about.html">Product Innovation</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h5>Support</h5>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="contact.html">Compliance & IP</a></li>
+                    <li><a href="contact.html">API Docs</a></li>
+                    <li><a href="contact.html">Lab Notes Integration</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Saas Template Project. Built for R&D Managers, CTOs, and Innovation Labs. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
