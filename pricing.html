@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - Researchily | AI Chat for R&D Teams</title>
+    <meta name="description" content="Choose the right plan for your innovation lab. Researchily offers flexible pricing for R&D teams, from literature reviews to patent search tools.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #8B5CF6; /* Vibrant Purple */
+            --color-primary-dark: #6D28D9;
+            --color-secondary: #F59E0B; /* Vibrant Orange */
+            --color-background: #0F172A; /* Deep Navy */
+            --color-surface: #1E293B; /* Slate 800 */
+            --color-text: #F8FAFC; /* Slate 50 */
+            --color-text-muted: #94A3B8; /* Slate 400 */
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --gradient-vibrant: linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #F59E0B 100%);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            text-decoration: none;
+            color: var(--color-text);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-secondary);
+        }
+
+        .cta-button {
+            background: var(--gradient-vibrant);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.5);
+            filter: brightness(1.1);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 12rem 5% 6rem;
+            text-align: center;
+            background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.15), transparent),
+                        radial-gradient(circle at bottom left, rgba(245, 158, 11, 0.1), transparent);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 span {
+            background: var(--gradient-vibrant);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--color-text-muted);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        /* --- Pricing Cards --- */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            padding: 0 5% 6rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: var(--color-surface);
+            border-radius: 24px;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--color-primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .pricing-card.popular {
+            border: 2px solid var(--color-primary);
+            background: linear-gradient(var(--color-surface), var(--color-surface)) padding-box,
+                        var(--gradient-vibrant) border-box;
+        }
+
+        .badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient-vibrant);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: baseline;
+        }
+
+        .plan-price span {
+            font-size: 1rem;
+            color: var(--color-text-muted);
+            margin-left: 0.5rem;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 2.5rem;
+            flex-grow: 1;
+        }
+
+        .plan-features li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .plan-features li svg {
+            color: var(--color-primary);
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+
+        /* --- Comparison Table --- */
+        .comparison-section {
+            padding: 6rem 5%;
+            background: rgba(30, 41, 59, 0.5);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .table-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        th {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .feature-category {
+            background: rgba(139, 92, 246, 0.1);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            letter-spacing: 0.05em;
+            color: var(--color-primary);
+        }
+
+        /* --- FAQ --- */
+        .faq-section {
+            padding: 6rem 5%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 2rem;
+            background: var(--color-surface);
+            padding: 2rem;
+            border-radius: 16px;
+        }
+
+        .faq-item h3 {
+            margin-bottom: 1rem;
+            color: var(--color-secondary);
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: #070B14;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-logo {
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--color-text-muted);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--color-surface);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background: var(--color-primary);
+        }
+
+        .copyright {
+            text-align: center;
+            color: var(--color-text-muted);
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .pricing-card {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">
+            <span style="font-weight:700;font-size:1.25rem">Saas Template Project</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="pricing.html" style="color: var(--color-secondary);">Pricing</a>
+            <a href="contact.html">Contact</a>
+            <a href="contact.html" class="cta-button">Start Free Trial</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Pricing Designed for <span>Modern Innovation.</span></h1>
+        <p>Whether you're a solo researcher or a global R&D laboratory, Researchily scales to meet your technical demands and IP safety requirements.</p>
+    </header>
+
+    <section class="pricing-grid">
+        <!-- Free Plan -->
+        <div class="pricing-card">
+            <div class="plan-name">Explorer</div>
+            <p style="color: var(--color-text-muted)">Free for first 10 queries</p>
+            <div class="plan-price">$0<span>/forever</span></div>
+            <ul class="plan-features">
+                <li>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    Basic Scientific Summaries
+                </li>
+                <li>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    Public Literature Access
+                </li>
+                <li>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    Standard AI Hallucination Guard
+                </li>
+                <li>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    1 Project Workspace
+                </li>
+            </ul>
+            <a href="contact.html" class="cta-button" style="background: transparent; border: 2px solid var(--color-primary); box-shadow: none;">Get Started</a>
+        </div>
+
+        <!-- Pro Plan -->
+        <div class="pricing-card popular">
+            <div class="badge">Most Popular for Teams</div>
+            <div class="plan-name">Innovation Lab</div>
+            <p style="color: var(--color-text-muted)">Unlimited queries & Patent search</p>
+            <div class="plan-price">$200<span>/month</span></div>
+            <ul class="plan-features">
+                <li>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    Unlimited R&D GPT Queries
+                </li>
+                <li>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    Global Patent Database Access
+                </li>
+                <li>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    Full Citations & Source Verification
+                </li>
+                <li>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    Experiment Design Partner AI
+                </li>
+                <li>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    Enterprise IP Protection
+                </li>
+                <li>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    Custom ELN/LIMS Integrations
+                </li>
+            </ul>
+            <a href="contact.html" class="cta-button">Scale Innovation</a>
+        </div>
+    </section>
+
+    <section class="comparison-section">
+        <h2 class="section-title">Compare Capabilities</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Explorer</th>
+                        <th>Innovation Lab</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="3" class="feature-category">Research & Analysis</td></tr>
+                    <tr>
+                        <td>Scientific Literature Review</td>
+                        <td>Basic</td>
+                        <td>Deep Technical</td>
+                    </tr>
+                    <tr>
+                        <td>Patent Search & Mapping</td>
+                        <td>—</td>
+                        <td>Unlimited</td>
+                    </tr>
+                    <tr>
+                        <td>Citation Verification</td>
+                        <td>Standard</td>
+                        <td>Advanced Multi-Source</td>
+                    </tr>
+                    <tr><td colspan="3" class="feature-category">Team & Infrastructure</td></tr>
+                    <tr>
+                        <td>Workspace Units</td>
+                        <td>1 User</td>
+                        <td>Unlimited Team</td>
+                    </tr>
+                    <tr>
+                        <td>Slack/Teams Integration</td>
+                        <td>—</td>
+                        <td>Included</td>
+                    </tr>
+                    <tr>
+                        <td>API Access</td>
+                        <td>—</td>
+                        <td>Priority Access</td>
+                    </tr>
+                    <tr><td colspan="3" class="feature-category">Security & IP</td></tr>
+                    <tr>
+                        <td>Data Encryption</td>
+                        <td>AES-256</td>
+                        <td>Enterprise Grade</td>
+                    </tr>
+                    <tr>
+                        <td>Confidential Mode</td>
+                        <td>—</td>
+                        <td>Included</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <h2 class="section-title">Pricing FAQ</h2>
+        <div class="faq-item">
+            <h3>How do you handle Intellectual Property (IP)?</h3>
+            <p>For Innovation Lab subscribers, we offer a Zero-Retention guarantee. Your queries, experimental data, and internal documentation are never used to train our models.</p>
+        </div>
+        <div class="faq-item">
+            <h3>What happens after my 10 free queries?</h3>
+            <p>The Explorer plan is designed for testing. Once you hit the limit, you can upgrade to the Innovation Lab plan for $200/month to continue your research without interruption.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Can we integrate with our internal lab systems?</h3>
+            <p>Yes. Our Innovation Lab plan includes support for custom workflows and integrations with standard ELN (Electronic Lab Notebook) and LIMS tools via our robust API.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-links">
+                <a href="index.html" class="logo footer-logo">
+                    <span style="font-weight:700;font-size:1.25rem">Saas Template Project</span>
+                </a>
+                <p>Empowering R&D teams with AI that understands the nuance of science.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Platform</h4>
+                <ul>
+                    <li><a href="index.html">Product Overview</a></li>
+                    <li><a href="pricing.html">Pricing Plans</a></li>
+                    <li><a href="#">Integrations</a></li>
+                    <li><a href="#">Compliance</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="about.html">About Researchily</a></li>
+                    <li><a href="#">R&D Case Studies</a></li>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="contact.html">Support</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            Copyright &copy; 2026 Saas Template Project | Researchily AI for R&D.
+        </div>
+    </footer>
+</body>
+</html>
