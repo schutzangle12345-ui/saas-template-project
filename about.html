@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Researchily - AI for R&D Teams</title>
+    <meta name="description" content="Learn about the mission behind Researchily, the AI chat platform designed specifically for R&D teams to accelerate scientific discovery and product innovation.">
+    <style>
+        :root {
+            --color-primary: #7C3AED;
+            --color-primary-dark: #5B21B6;
+            --color-accent: #F59E0B;
+            --color-background: #0F172A;
+            --color-surface: #1E293B;
+            --color-text: #F8FAFC;
+            --color-text-muted: #94A3B8;
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --gradient-vibrant: linear-gradient(135deg, #7C3AED 0%, #F59E0B 100%);
+            --section-padding: 80px 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        header {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            text-decoration: none;
+            color: var(--color-text);
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .nav-cta {
+            background: var(--color-primary);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.2s ease, background 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            transform: scale(1.05);
+            background: var(--color-primary-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 20px 100px;
+            background: var(--gradient-vibrant);
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to top, var(--color-background), transparent);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* About Sections */
+        .section {
+            padding: var(--section-padding);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-accent);
+            font-weight: 800;
+        }
+
+        .content-block p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Mission Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: var(--color-surface);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--color-primary);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        /* Jobs To Be Done Section */
+        .jobs-section {
+            background: var(--color-surface);
+            border-radius: 40px;
+            padding: 4rem;
+            margin: 4rem auto;
+        }
+
+        .job-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .job-number {
+            background: var(--color-accent);
+            color: var(--color-background);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+
+        /* CTA Section */
+        .about-cta {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(rgba(124, 58, 237, 0.1), rgba(124, 58, 237, 0.05));
+            border-radius: 40px;
+            margin: 4rem 20px;
+        }
+
+        .btn-large {
+            display: inline-block;
+            background: var(--color-primary);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            text-decoration: none;
+            margin-top: 2rem;
+            box-shadow: 0 10px 20px rgba(124, 58, 237, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-large:hover {
+            background: var(--color-primary-dark);
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(124, 58, 237, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: #080C14;
+            padding: 80px 20px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-logo {
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.8rem;
+            color: var(--color-accent);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-text);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--color-surface);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            fill: var(--color-text-muted);
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: var(--color-primary);
+            fill: white;
+        }
+
+        .copyright {
+            text-align: center;
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .hero h1 {
+                font-size: 3rem;
+            }
+            .jobs-section {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <span style="font-weight:700;font-size:1.25rem">Saas Template Project</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="contact.html">Contact</a>
+                <a href="contact.html" class="nav-cta">Get Started</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Engineered for the <br>Frontiers of Science</h1>
+            <p>Researchily is more than a chatbot. It's a specialized AI workspace designed to solve the unique challenges of R&D teams, innovation labs, and CTOs.</p>
+        </section>
+
+        <!-- Mission Section -->
+        <section class="section">
+            <div class="grid">
+                <div class="content-block">
+                    <h2 class="section-title">The Problem We Solve</h2>
+                    <p>General-purpose AI tools often fall short in high-stakes technical environments. R&D managers face three critical roadblocks:</p>
+                    <p>1. <strong>Technical Hallucinations:</strong> Standard LLMs misinterpret complex scientific data, leading to misguided experiments and wasted budgets.</p>
+                    <p>2. <strong>Information Overload:</strong> Researchers spend endless nights skimming literature, which delays essential project milestones.</p>
+                    <p>3. <strong>Fragmented Workflows:</strong> There is no unified workspace to connect literature summaries with active experiment plans, causing lost context.</p>
+                </div>
+                <div class="content-block">
+                    <div class="card" style="background: var(--color-primary);">
+                        <h3 style="color: white;">Our Mission</h3>
+                        <p style="color: white; opacity: 0.9;">To bridge the gap between vast scientific knowledge and actionable experiment design, ensuring that innovation labs can move from hypothesis to discovery with 10x velocity and zero hallucinations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section class="section">
+            <h2 class="section-title" style="text-align: center;">Why R&D Teams Trust Us</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>Accuracy First</h3>
+                    <p>We leverage specialized retrieval systems to ensure every claim is backed by a verifiable citation from patents or peer-reviewed papers.</p>
+                </div>
+                <div class="card">
+                    <h3>IP Protection</h3>
+                    <p>Your research data is your most valuable asset. Researchily provides enterprise-grade security and private data options to keep your IP safe.</p>
+                </div>
+                <div class="card">
+                    <h3>Contextual Intelligence</h3>
+                    <p>Our AI understands the lifecycle of an R&D project, from initial literature review to final documentation and lab notes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Jobs To Be Done Section -->
+        <section class="section">
+            <div class="jobs-section">
+                <h2 class="section-title">Our Commitment to Your Workflow</h2>
+                <div class="job-item">
+                    <div class="job-number">1</div>
+                    <div>
+                        <h3>Avoid Reinventing the Wheel</h3>
+                        <p>When you start a new R&D project, we help you quickly review the most relevant papers and patents to ensure your path is truly novel.</p>
+                    </div>
+                </div>
+                <div class="job-item">
+                    <div class="job-number">2</div>
+                    <div>
+                        <h3>Bridge the Expert Gap</h3>
+                        <p>Our summaries distill complex technical literature into clear insights, allowing you to share understanding with non-experts and stakeholders instantly.</p>
+                    </div>
+                </div>
+                <div class="job-item">
+                    <div class="job-number">3</div>
+                    <div>
+                        <h3>Design Better Studies</h3>
+                        <p>As your AI partner, Researchily surfaces hidden risks and open questions during the planning phase, refining your experimental design before you hit the bench.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="about-cta">
+            <h2 class="section-title">Ready to Transform Your R&D?</h2>
+            <p>Join the innovation labs and CTOs who are cutting literature review time by 70%.</p>
+            <a href="contact.html" class="btn-large">Start Your Research Journey</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-info">
+                <a href="index.html" class="footer-logo">
+                    <span style="font-weight:700;font-size:1.25rem;color:white">Saas Template Project</span>
+                </a>
+                <p style="color: var(--color-text-muted); max-width: 300px;">
+                    Researchily: The AI-powered research assistant purpose-built for high-performance R&D teams.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-icon">
+                        <svg viewBox="0 0 24 24" width="20" height="20"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg viewBox="0 0 24 24" width="20" height="20"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Platform</h4>
+                <ul>
+                    <li><a href="index.html">Product Overview</a></li>
+                    <li><a href="pricing.html">Pricing Plans</a></li>
+                    <li><a href="about.html">About Mission</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="#">Technical Docs</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 Saas Template Project. All rights reserved. Accelerating R&D with Scientific AI.
+        </div>
+    </footer>
+
+</body>
+</html>
